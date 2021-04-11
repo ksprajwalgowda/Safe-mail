@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags %} 
+{% block title %} Safe mail| Sign Up{% endblock %}
+
+{% block content %}
+
+{% comment %} <div >
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button class="btn btn-success" type="submit">Sign up</button>
+  </form>
+  </div> {% endcomment %}
+
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-5">
+            <div class="card card-login register">
+            <div class="card-body">
+                <h2 class="login-card-description text-center">Registration Form</h2>
+                <hr>
+                <form method="post">
+                  {% csrf_token %}
+                  {{form|crispy}}
+                    
+                    <button class="btn btn-teal text-white">Register</button>
+                </form>
+                <p class="login-card-footer-text">Already have an account? <a href="{% url 'login' %}" class="text-reset">Sign in</a></p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

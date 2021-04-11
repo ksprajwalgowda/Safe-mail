@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags %} 
+{% block title %}Safe mail | Login{% endblock %}
+
+{% block content %}
+
+{% comment %} <h2 align=center>Login</h2>
+<form  method="post">
+  {% csrf_token %}
+  {{ form.username|as_crispy_field }}<br>
+  {{ form.password|as_crispy_field }}<br>
+  <button class="btn btn-success m-2" type="submit">Login</button>
+</form> {% endcomment %}
+
+
+
+
+
+ <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <!-- <img src="images/login.jpg" alt="" class="login-img img-fluid"> -->
+                </div>
+                <div class="col-md-5">
+                    <div class="card card-login login">
+                    <div class="card-body">
+                        <h2 class="login-card-description text-center">Sign into your account</h2>
+                        <hr>
+                        <form method="post">
+                          {% csrf_token %}
+                            <div class="form-group p-2">
+                                {% comment %} <label for="username">Username</label> {% endcomment %}
+                                {{ form.username|as_crispy_field }}                            </div>
+                            <div class="form-group p-2">
+                                {% comment %} <label for="password">Password</label> {% endcomment %}
+                                {{ form.password|as_crispy_field }}                            </div>
+                            <button class="btn btn-teal text-white" type="submit">Login</button>
+                        </form>
+                        <p class="login-card-footer-text">Don't have an account? <a href="{% url 'accounts:signup' %}" class="text-reset">Register here</a></p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

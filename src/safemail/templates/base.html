@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}Safe mail{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"></head>
+<body>
+  <main>
+
+ <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+
+          {% if user.is_authenticated %}
+          <a class="nav-item nav-link" href="{% url 'mail:compose' %}">compose</a>
+          <a class="nav-item nav-link" href="{% url 'mail:inbox' %}">inbox</a>
+          <a class="nav-item nav-link" href="{% url 'mail:sent' %}">sent mail</a>
+
+          <a class="nav-item nav-link navbar-right" href="{% url 'logout' %}">logout</a>
+          {% else %}
+            <a class="nav-item nav-link" href="{% url 'accounts:signup' %}">Singup</a>
+
+              <a class="nav-item nav-link navbar-right" href="{% url 'login' %}">login</a>
+
+
+          {% endif %}
+
+
+
+    </div>
+  </div>
+</nav>  -->
+
+<style>
+    body {
+        background-image: url({% static 'images/bg.jpg' %}); 
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.5);
+        
+    }
+
+    .caption {
+    width: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 38%;
+    color: white;
+    z-index: 1;
+    text-transform: uppercase;
+
+}
+
+.caption h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    letter-spacing: .3rem;
+    text-shadow: .1rem .1rem .8rem black;
+    padding-bottom: 2rem;
+}
+
+.caption h3 {
+    font-size: 2rem;
+    text-shadow: .1rem .1rem .5rem black;
+    padding-bottom: 1.6rem;
+}
+
+.btn-lg {
+    text-transform: uppercase;
+}
+
+
+.bg-teal , .btn-teal{
+    background-color: #3b6e77 !important;
+}
+
+.card {
+    margin-top: 12rem !important;
+    bottom: 5rem;
+    
+}
+
+.card-login {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border-radius: 10px;
+    /* margin-top: 10rem; */
+}
+
+.register {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+.login {
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+}
+
+
+.in >.container-fluid {
+    padding-right: 150px;
+    padding-left: 150px; 
+    height: 100vh;
+    /* bottom: 5rem !important; */
+    
+}
+
+.container-fluid1 {
+    min-height: 25vh;
+    max-height: 50vh;
+}
+.card-inbox {
+    background-color: rgba(0, 0, 0, 0.07);
+
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+
+@media (max-width: 767px) {
+.caption h1 {
+    font-size: 2.3rem;
+    letter-spacing: .15rem;
+    padding-bottom: .5rem;
+}
+
+.caption h3 {
+    font-size: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+
+.btn-lg {
+    text-transform: uppercase;
+}
+
+.in >.container-fluid {
+    padding-right: 10px;
+    padding-left: 10px; 
+
+}
+
+}
+
+</style>
+
+ <nav class="navbar navbar-expand-sm navbar-dark bg-teal "> 
+        <div class="container">
+            <a href="{% url 'mail:home' %}" class="navbar-brand">
+                <i class="fas fa-mail-bulk"></i> Safe Mail</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#mail-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mail-navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-iteam px-3">
+                        <a href="{% url 'mail:home' %}" class="nav-link text-white">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-iteam px-3">
+                        <a href="{% url 'mail:compose' %}" class="nav-link text-white" >Compose</a>
+                    </li>
+                    <li class="nav-iteam px-3">
+                        <a href="{% url 'mail:inbox' %}" class="nav-link text-white">Inbox</a>
+                    </li>
+                    <li class="nav-iteam px-3">
+                        <a href="{% url 'mail:sent' %}" class="nav-link text-white">Sent</a>
+                    </li>
+                    <li class="nav-iteam px-3">
+                        <a href="{% url 'logout' %}" class="nav-link text-white">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-iteam px-3">
+                        <a href="{% url 'accounts:signup' %}" class="nav-link text-white">Sign up</a>
+                    </li>
+                    <li class="nav-iteam px-3">
+                        <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+                    </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </div>
+    </nav> 
+
+
+ 
+    <div class="main">
+        
+  {% block content %}
+
+    {% endblock %}
+</div>
+    
+
+
+  <footer class="p-3 bg-teal text-white text-center mt-3 ">
+      <div class="container">
+          Copyrights &copy 2021. No right Reserved
+      </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+
+
+  
+
+  </main>
+</body>
+</html>

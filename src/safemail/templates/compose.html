@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Safe mail | Compose{% endblock %}
+{% block content %}
+  {% comment %} <p> {{sen}} </p>
+  <form method="POST" enctype="multipart/form-data"> 
+  
+    <!-- Security token -->
+    {% csrf_token %} 
+  
+    <!-- Using the formset -->
+    <input name=to type="text"> 
+    <input name=sub type="text"> 
+    <input name=message type="text"> 
+      
+    <input type="submit" value="Submit"> 
+</form>  {% endcomment %}
+
+
+<div class="container">
+            <div class="card">
+                <h4 class="card-header bg-teal text-white">New Message</h4>
+                <div class="card-body">
+                <p> {{sen}} </p>
+                    <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                        <div class="form-group">
+                          <label for="recipient-name" class="col-form-label">To:</label>
+                          <input type="text" name=to class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="col-form-label">Subject:</label>
+                            <input type="text" name=sub class="form-control" id="subject">
+                          </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Message:</label>
+                          <textarea class="form-control" name=message id="message-text" rows="5"></textarea>
+                        </div>
+                        <button type="submit" value="Submit" class="btn btn-info">Send</button>
+                    </form>
+                </div>
+              </div>
+        </div>
+
+
+{% endblock %}

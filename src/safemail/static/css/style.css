@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(images/bg.jpg);
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Lato', sans-serif;
+    height: 100vh;
+}
+
+.caption {
+    width: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 38%;
+    color: white;
+    z-index: 1;
+    text-transform: uppercase;
+
+}
+
+.caption h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    letter-spacing: .3rem;
+    text-shadow: .1rem .1rem .8rem black;
+    padding-bottom: 2rem;
+}
+
+.caption h3 {
+    font-size: 2rem;
+    text-shadow: .1rem .1rem .5rem black;
+    padding-bottom: 1.6rem;
+}
+
+.btn-lg {
+    text-transform: uppercase;
+}
+
+
+.bg-teal , .btn-teal{
+    background-color: #3b6e77 !important;
+}
+
+.card {
+    margin-top: 8rem;
+   
+}
+
+.card-login {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* color: white; */
+    border-radius: 10px;
+    /* margin-top: 10rem; */
+}
+.container-fluid {
+    background-color: rgba(0, 0, 0, 0.07);
+    height: 50vh;
+    padding-right: 150px;
+    padding-left: 150px; 
+    
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}

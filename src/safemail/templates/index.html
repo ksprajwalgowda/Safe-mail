@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Safe mail {% endblock %}
+  
+{% block content %}
+  <div class="caption text-center">
+        <h1>Welcome To Safe Mail</h1>
+        <h3>Secure your Communications with Safe Mail</h3>
+        <a href="{% url 'accounts:signup' %}" class="btn btn-outline-info btn-lg text-white">Get Started</a>
+    </div>
+    
+    <!-- <a class="btn btn-outline-info btn-lg text-white" herf="#">Get Started</a> -->
+
+{% endblock %}

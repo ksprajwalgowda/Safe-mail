@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Safe mail | Inbox{% endblock %}
+
+{% block content %}
+
+  <!-- {% for x in obj %}
+  {{ x.to}}
+  {{ x.sender}}
+  {{x.sub}}
+  {{ x.message}}
+  {{x.pk}}
+  <a href=" {{x.pk}}/delete">delete</a>
+  <br>
+    
+  {% endfor %} -->
+
+<div class="in">
+<div class="container-fluid">
+            <div class="card">
+                <h4 class="card-header bg-teal text-white">Primary Messages</h4>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr scope="row">
+                            <th scope="col">From :</th>
+                            <th scope="col">Message</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for x in obj %}
+                          <tr>
+                            <th scope="row">{{ x.sender}}</th>
+                            <td>
+                                <h6 class="" data-toggle="modal" data-target="#inbox-modal{{x.pk}}">{{x.sub}}</h6>
+                            </td>  
+                            <td>
+                                <span><a href=" {{x.pk}}/delete"><i class="fas fa-trash"></i></a></span>
+                            </td>
+                          </tr>
+                          <div class="modal mt-5" id="inbox-modal{{x.pk}}">
+                            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">{{x.sub}}</h5>
+                                        <button class="close" data-dismiss="modal">
+                                            <i class="fa fa-times-circle"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="font-weight-bold">{{ x.sender}} <span class="text-muted">to me :</span></p>
+                                        <div class="container-fluid1">
+                                            <div class="card-inbox text-justify p-3">
+                                              <p>{{x.message}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+      </div>
+        
+      
+
+{% endblock %}
